@@ -28,7 +28,7 @@ const senMsg = async (data: string) => {
     message.error('不能为空')
     return
   }
-  console.log(unref(dataList))
+  // console.log(unref(dataList))
   unref(dataList).push({ type: 'right', msg: data })
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
