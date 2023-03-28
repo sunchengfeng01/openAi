@@ -19,7 +19,7 @@ import { chatList, type chatBean } from './model/index'
 const dataList = ref(chatList)
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: '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',
 
 });
 const openai = new OpenAIApi(configuration);
