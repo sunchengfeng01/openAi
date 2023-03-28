@@ -16,6 +16,15 @@ export default defineConfig({
       resolvers: [AntDesignVueResolver()]
     })
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://express-ten-iota.vercel.app',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     // 配置路径别名
     alias: {

@@ -26,9 +26,7 @@
   <!-- <ai-massege></ai-massege> -->
 </template>
 <script lang="ts" setup>
-import { ref, defineEmits, defineProps, nextTick, watch, unref } from 'vue';
-import aiMassege from "./Aimassege.vue"
-import { message } from 'ant-design-vue';
+import { ref, nextTick, watch, unref } from 'vue';
 import { chatBean } from '../model/index'
 const emits = defineEmits(['createChatCompletion'])
 const props = defineProps({
@@ -54,7 +52,6 @@ const abc = ref()
 const state1 = ref('')
 watch(() => props.datalist, () => {
   nextTick(() => {
-    // console.log(document.getElementById('layout_content'))
     document.getElementById('layout_content')?.scrollTo(0, document.getElementById('layout_content')?.scrollHeight as number)
   })
 }, { immediate: true, deep: true })
