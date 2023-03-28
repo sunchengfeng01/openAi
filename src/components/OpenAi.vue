@@ -29,7 +29,7 @@
 import { ref, defineEmits, defineProps, nextTick, watch, unref } from 'vue';
 import aiMassege from "./Aimassege.vue"
 import { message } from 'ant-design-vue';
-import { type chatBean } from '@/model'
+import { chatBean } from '../model/index'
 const emits = defineEmits(['createChatCompletion'])
 const props = defineProps({
   datalist: {

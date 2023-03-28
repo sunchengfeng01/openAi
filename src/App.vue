@@ -15,8 +15,8 @@ import OpenAi from './components/OpenAi.vue'
 import { ref, unref } from 'vue';
 import { Configuration, OpenAIApi } from "openai";
 import { message } from 'ant-design-vue';
-import { chatList, type chatBean } from '@/model'
-const dataList: chatBean[] = ref<chatBean>(chatList)
+import { chatList, type chatBean } from './model/index'
+const dataList = ref(chatList)
 
 const configuration = new Configuration({
   apiKey: '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',

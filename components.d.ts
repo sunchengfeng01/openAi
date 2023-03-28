@@ -10,15 +10,11 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
-    ACol: typeof import('ant-design-vue/es')['Col']
     Aimassege: typeof import('./src/components/Aimassege.vue')['default']
     AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
-    ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
-    ARow: typeof import('ant-design-vue/es')['Row']
-    ATextarea: typeof import('ant-design-vue/es')['Textarea']
     OpenAi: typeof import('./src/components/OpenAi.vue')['default']
   }
 }
