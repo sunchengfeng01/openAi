@@ -13,39 +13,32 @@
 <script lang="ts" setup>
 import OpenAi from './components/OpenAi.vue'
 import { ref, unref } from 'vue';
-// import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from "openai";
 import { message } from 'ant-design-vue';
 import { chatList, type chatBean } from './model/index'
-import axios from 'axios'
 const dataList = ref(chatList)
 
-// const configuration = new Configuration({
-//   apiKey: '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',
-//   basePath: '/api',
-// });
-// const openai = new OpenAIApi(configuration);
+const configuration = new Configuration({
+  apiKey: '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',
+});
+const openai = new OpenAIApi(configuration);
 // https://express-ten-iota.vercel.app
 const senMsg = async (data: string) => {
-  axios.post('/api').then((data) => {
-    console.log(data)
-  })
   if (!data) {
     message.error('不能为空')
     return
   }
-
-  // console.log(unref(dataList))
   unref(dataList).push({ type: 'right', msg: data })
-  // const completion = await openai.createChatCompletion({
-  //   model: "gpt-3.5-turbo",
-  //   messages: [
-  //     { role: "system", content: data },
-  //   ],
+  const completion = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      { role: "system", content: data },
+    ],
 
-  // });
+  });
 
-  // unref(dataList).push({ type: 'left', msg: completion.data.choices[0].message?.content as string })
-  // console.log(completion.data.choices[0].message?.content);
+  unref(dataList).push({ type: 'left', msg: completion.data.choices[0].message?.content as string })
+
 }
 
 
