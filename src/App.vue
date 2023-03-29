@@ -29,16 +29,20 @@ const senMsg = async (data: string) => {
     return
   }
   unref(dataList).push({ type: 'right', msg: data })
-  const completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [
-      { role: "system", content: data },
-    ],
+  try {
+    message.loading('模型思考中请耐心等待', 0)
+    const completion = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: data },
+      ],
 
-  });
-
-  unref(dataList).push({ type: 'left', msg: completion.data.choices[0].message?.content as string })
-
+    });
+    message.destroy()
+    unref(dataList).push({ type: 'left', msg: completion.data.choices[0].message?.content as string })
+  } catch (e) {
+    message.error('请求错误')
+  }
 }
 
 
