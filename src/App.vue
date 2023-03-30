@@ -29,6 +29,10 @@ const senMsg = async (data: string) => {
     // express-cnw9gt339-sunchengfeng01.vercel.app
     const res: any = await axios.post('https://express-cnw9gt339-sunchengfeng01.vercel.app', {
       body: JSON.stringify({ data: data }),
+    }, {
+      Headers: {
+        "Access-Control-Allow-Origin": '*'
+      }
     })
     message.destroy()
     let { data: { code } } = res
