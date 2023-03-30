@@ -26,11 +26,13 @@ const senMsg = async (data: string) => {
   unref(dataList).push({ type: 'right', msg: data })
   try {
     message.loading('模型思考中请耐心等待', 0)
-    const res: any = await axios.post(`https://express-ho1mm6n11-sunchengfeng01.vercel.app`, {
+    // express-cnw9gt339-sunchengfeng01.vercel.app
+    const res: any = await axios.post('express-cnw9gt339-sunchengfeng01.vercel.app', {
       body: JSON.stringify({ data: data }),
     })
     message.destroy()
-    let { data: code } = res
+    let { data: { code } } = res
+    console.log('code ', code)
     if (code == 400) return message.warn('发送失败')
     unref(dataList).push({ type: 'left', msg: res.data.data })
   } catch (e) {
