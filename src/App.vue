@@ -27,7 +27,7 @@ const senMsg = async (data: string) => {
   try {
     message.loading('模型思考中请耐心等待', 0)
     // express-cnw9gt339-sunchengfeng01.vercel.app
-    const res: any = await axios.post('express-cnw9gt339-sunchengfeng01.vercel.app', {
+    const res: any = await axios.post('http://express-cnw9gt339-sunchengfeng01.vercel.app', {
       body: JSON.stringify({ data: data }),
     })
     message.destroy()
