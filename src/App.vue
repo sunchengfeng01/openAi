@@ -13,16 +13,11 @@
 <script lang="ts" setup>
 import OpenAi from './components/OpenAi.vue'
 import { ref, unref } from 'vue';
-import { Configuration, OpenAIApi } from "openai";
 import { message } from 'ant-design-vue';
 import { chatList, type chatBean } from './model/index'
 const dataList = ref(chatList)
+import axios from 'axios'
 
-const configuration = new Configuration({
-  apiKey: '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',
-});
-const openai = new OpenAIApi(configuration);
-// https://express-ten-iota.vercel.app
 const senMsg = async (data: string) => {
   if (!data) {
     message.error('不能为空')
@@ -31,27 +26,17 @@ const senMsg = async (data: string) => {
   unref(dataList).push({ type: 'right', msg: data })
   try {
     message.loading('模型思考中请耐心等待', 0)
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: data },
-      ],
-
-    });
+    const res: any = await axios.post(`https://express-ho1mm6n11-sunchengfeng01.vercel.app`, {
+      body: JSON.stringify({ data: data }),
+    })
     message.destroy()
-    unref(dataList).push({ type: 'left', msg: completion.data.choices[0].message?.content as string })
+    let { data: code } = res
+    if (code == 400) return message.warn('发送失败')
+    unref(dataList).push({ type: 'left', msg: res.data.data })
   } catch (e) {
     message.error('请求错误')
   }
 }
-
-
-
-
-
-
-
-
 </script>
 
 <style scoped>

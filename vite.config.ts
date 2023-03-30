@@ -22,6 +22,12 @@ export default defineConfig({
         target: 'https://express-ten-iota.vercel.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/getAI': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+
+        rewrite: (path) => path.replace(/^\/getAI/, '')
       }
     }
   },
