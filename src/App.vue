@@ -27,7 +27,7 @@ const senMsg = async (data: string) => {
   try {
     message.loading('模型思考中请耐心等待', 0)
     // express-cnw9gt339-sunchengfeng01.vercel.app
-    const res: any = await axios.post('https://express-cnw9gt339-sunchengfeng01.vercel.app', {
+    const res: any = await axios.post('https://express-cnw9gt339-sunchengfeng01.vercel.app/api', {
       body: JSON.stringify({ data: data }),
     }, {
       headers: {
@@ -48,6 +48,8 @@ const senMsg = async (data: string) => {
 <style scoped>
 .app-container {
   width: 100%;
+  height: 100%;
   overflow: hidden;
+  position: absolute;
 }
 </style>

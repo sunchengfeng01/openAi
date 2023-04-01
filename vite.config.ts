@@ -19,7 +19,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://express-ten-iota.vercel.app',
+        target: 'https://express-70j5e4piv-sunchengfeng01.vercel.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },

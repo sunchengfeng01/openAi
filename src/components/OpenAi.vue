@@ -22,8 +22,6 @@
       </a-input-search>
     </a-layout-footer>
   </a-layout>
-
-  <!-- <ai-massege></ai-massege> -->
 </template>
 <script lang="ts" setup>
 import { ref, nextTick, watch, unref } from 'vue';
@@ -65,6 +63,7 @@ const handler = () => {
 <style scoped lang="less">
 .layout {
   padding: 10px 12px;
+  height: 100%;
 }
 
 .sculpture {
