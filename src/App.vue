@@ -31,7 +31,7 @@ const senMsg = async (data: string) => {
       body: JSON.stringify({ data: data }),
     }, {
       headers: {
-        "access-control-allow-origin": '*'
+        "Access-Control-Allow-Origin": '*'
       }
     })
     message.destroy()
